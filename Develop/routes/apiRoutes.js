@@ -38,3 +38,5 @@ app.post('/api/notes', (req, res) => {
 app.delete('/api/notes', (req, res) => {
     
 });
+
+module.exports = app;
