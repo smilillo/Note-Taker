@@ -1,5 +1,6 @@
 const app = require ('express').Router();
 const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const uuidv1 = require('uuid/v1');
 
 // GET /api/notes
 app.get('/api/notes', (req, res) => {
@@ -7,6 +8,7 @@ app.get('/api/notes', (req, res) => {
 
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
+
 // POST /api/notes
 app.post('/api/notes', (req, res) => {
     console.info(`POST request received to add notes`);
@@ -18,8 +20,9 @@ app.post('/api/notes', (req, res) => {
   if (title && text) {
     // Variable for the object we will save
     const newNote = {
-      title,
-      text,
+      title: title,
+      text: text,
+      id: uuidv1()
     };
 
     readAndAppend(newNote, './db/db.json');
@@ -34,6 +37,7 @@ app.post('/api/notes', (req, res) => {
     res.json('Error in posting note');
   }
 });
+
 // DELETE /api/notes
 app.delete('/api/notes', (req, res) => {
     
