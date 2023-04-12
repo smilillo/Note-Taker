@@ -1,6 +1,6 @@
 const app = require ('express').Router();
 const { readFromFile, writeToFile, readAndAppend } = require('../helpers/fsUtils');
-// const uuidv1 = require('uuid/v1');
+const { v4: uuidv4 } = require('uuid');
 
 // GET /notes
 app.get('/notes', (req, res) => {
@@ -22,7 +22,7 @@ app.post('/notes', (req, res) => {
     const newNote = {
       title: title,
       text: text,
-      // id: uuidv1()
+      note_id: uuidv4()
     };
 
     readAndAppend(newNote, './db/db.json');
@@ -39,8 +39,20 @@ app.post('/notes', (req, res) => {
 });
 
 // DELETE /api/notes
-app.delete('/notes', (req, res) => {
-    
+app.delete('/notes:id', (req, res) => {
+    const noteId = req.params.note_id;
+    readFromFile('./db/db.json')
+      .then((data) => JSON.parse(data))
+      .then((json) => {
+        // Make a new array of all tips except the one with the ID provided in the URL
+        const result = json.filter((note) => note.note_id !== noteId);
+  
+        // Save that array to the filesystem
+        writeToFile('./db/db.json', result);
+  
+        // Respond to the DELETE request
+        res.json(`Item ${noteId} has been deleted 🗑️`);
+      });
 });
 
 module.exports = app;
