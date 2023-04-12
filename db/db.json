@@ -1,6 +1,7 @@
 [
     {
-        "title": "Test Title",
-        "text": "Test text"
+        "title": "Test Note",
+        "text": "Hi! I'm a test!",
+        "id": "ace25fdd-a523-4647-a80a-1d450733981b"
     }
 ]

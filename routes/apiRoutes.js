@@ -13,7 +13,7 @@ app.get('/notes', (req, res) => {
 app.post('/notes', (req, res) => {
     console.info(`POST request received to add notes`);
     
-    // Destructuring assignment for the items in req.body
+    // Destructuring for the items in req.body
     const { title, text } = req.body;
 
   // If all the required properties are present
@@ -22,7 +22,7 @@ app.post('/notes', (req, res) => {
     const newNote = {
       title: title,
       text: text,
-      note_id: uuidv4()
+      id: uuidv4()
     };
 
     readAndAppend(newNote, './db/db.json');
@@ -38,14 +38,14 @@ app.post('/notes', (req, res) => {
   }
 });
 
-// DELETE /api/notes
-app.delete('/notes:id', (req, res) => {
-    const noteId = req.params.note_id;
+// DELETE /notes
+app.delete('/notes/:id', (req, res) => {
+    const noteId = req.params.id;
     readFromFile('./db/db.json')
       .then((data) => JSON.parse(data))
       .then((json) => {
-        // Make a new array of all tips except the one with the ID provided in the URL
-        const result = json.filter((note) => note.note_id !== noteId);
+        // Make a new array of all notes except the one with the ID provided in the URL
+        const result = json.filter((note) => note.id !== noteId);
   
         // Save that array to the filesystem
         writeToFile('./db/db.json', result);

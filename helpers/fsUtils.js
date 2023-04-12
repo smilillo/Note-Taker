@@ -1,3 +1,4 @@
+// File copied from Activity 24 
 const fs = require('fs');
 const util = require('util');
 
