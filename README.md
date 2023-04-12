@@ -25,6 +25,13 @@ https://github.com/smilillo/Note-Taker
 ### Deployed Project on Heroku:
 https://secret-sands-09207.herokuapp.com/
 
+### Screenshots:
+![secret-sands-09207 herokuapp com_](https://user-images.githubusercontent.com/121981411/231332324-e248e596-8446-47e5-84cb-23cf05a6358c.png)
+![secret-sands-09207 herokuapp com_notes](https://user-images.githubusercontent.com/121981411/231332331-3a11be3f-8e7c-458c-83f5-4773475ec638.png)
+![secret-sands-09207 herokuapp com_notes (1)](https://user-images.githubusercontent.com/121981411/231332336-4c5c02c7-327a-42c7-8f47-e6dd8241e72d.png)
+![secret-sands-09207 herokuapp com_notes (2)](https://user-images.githubusercontent.com/121981411/231332342-3a42d186-3e59-4def-99d9-e4eaade6c6bf.png)
+
+
 ## Tests
 N/A
 
